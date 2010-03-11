@@ -31,6 +31,8 @@ include('versionchecker.php');
 session_start();
 cleanglobals();
 
+define('ADMIN_DEMO', true);
+
 // If statsconfig.php exists, we won't enable multiconfig functionality
 if (file_exists("../config/statsconfig.php"))
 {

@@ -795,6 +795,8 @@ function server_settings()
 
 function save_server_settings()
 {
+  checkdemo();
+
   global $currentconfignumber;
   global $myserver;
 
@@ -1058,6 +1060,8 @@ function list_players()
 
 function show_hide_playerstats()
 {
+  checkdemo();
+
   global $db_db;
   global $t;
 
@@ -1085,6 +1089,8 @@ function show_hide_playerstats()
 
 function reset_player_skill()
 {
+  checkdemo();
+
   global $db_db;
   global $t;
 
@@ -1170,6 +1176,7 @@ function delete_server()
     }
     else //if confirmed delete file
     {
+      checkdemo();
       $configfile = "statsconfig.php";
       fileDelete($config_dir,$configfile);
     }
@@ -1267,6 +1274,7 @@ function resetDatabase()
   }
   else
   {
+    checkdemo();
     echo "<table width=\"100%\" align =\"left\" class=\"success\">";
  
     //get table names
@@ -1387,4 +1395,17 @@ function displayadminfooter()
   </html>
 <?php
 }
+
+function checkdemo()
+{
+  if (ADMIN_DEMO == true)
+  {
+    echo "DISABLED IN DEMO VERSION!";
+    echo "<script>";
+    echo "window.location = \"index2.php\"";
+    echo "</script>";
+    exit;
+  }
+}
+
 ?>
